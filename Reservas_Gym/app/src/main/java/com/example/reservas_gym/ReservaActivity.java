@@ -44,7 +44,7 @@ public class ReservaActivity extends AppCompatActivity {
         btnShowDate = findViewById(R.id.btn_ShowDate);
         txtDate = findViewById(R.id.txtDate);
     }
-    public Intent launcheME(Context ctx)
+    public static  Intent launcheME(Context ctx)
     {
         return new Intent(ctx, ReservaActivity.class);
     }

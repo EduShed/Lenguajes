@@ -19,15 +19,13 @@ Button btnLaunch;
         btnLaunch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LaunchNext();
+                LaunchReserva();
             }
         });
     }
-    public void LaunchNext()
+    public void LaunchReserva()
     {
-        ReservaActivity reserva = new ReservaActivity();
-        Intent intent;
-        intent = reserva.launcheME(MainActivity.this);
+        Intent intent = Login.launcheME(MainActivity.this);
         startActivity(intent);
     }
 }
