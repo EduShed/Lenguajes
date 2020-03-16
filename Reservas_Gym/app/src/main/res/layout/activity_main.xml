@@ -7,16 +7,6 @@
     android:background="@drawable/bg2"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btnLaunchNext"
-       android:layout_alignParentBottom="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:text="Button"
-        tools:layout_editor_absoluteX="247dp"
-        tools:layout_editor_absoluteY="318dp" />
-
     <ImageView
         android:id="@+id/principalLogo"
         android:layout_width="300dp"
@@ -39,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
-            android:text="Welcome"
+            android:text="Bienvenidos"
             android:textSize="50dp"
             android:textColor="#ffffff"
             android:fontFamily="@font/aladin"></TextView>
@@ -48,17 +38,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="17dp"
-            android:text="UdeM's gym reservation app"
-            android:textSize="17dp"
+            android:text="Reservas gimnasio UdeM"
+            android:textSize="19dp"
             android:textColor="@android:color/darker_gray"
             android:fontFamily="@font/aladin"></TextView>
         <Button
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_next"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="50dp"
             android:background="@drawable/login_btn_design"
-            android:text="NEXT"
+            android:text="Continuar"
             android:textSize="20dp"
             android:fontFamily="@font/aladin">
         </Button>
