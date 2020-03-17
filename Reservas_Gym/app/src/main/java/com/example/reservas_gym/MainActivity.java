@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
 Button btnNext;
@@ -22,10 +23,12 @@ Button btnNext;
                 LaunchReserva();
             }
         });
+
     }
     public void LaunchReserva()
     {
         Intent intent = Login.launcheME(MainActivity.this);
         startActivity(intent);
     }
+
 }

@@ -48,7 +48,8 @@
         android:layout_below="@+id/imgLogo"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:layout_marginBottom="10dp"></EditText>
+        android:layout_marginBottom="10dp"
+        android:inputType="number"></EditText>
 
 
     <EditText
@@ -81,6 +82,7 @@
 
 
     <LinearLayout
+        android:id="@+id/lnr2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -112,6 +114,16 @@
             android:background="@android:color/transparent"></Button>
     </LinearLayout>
 
+    <ImageButton
+        android:id="@+id/imgAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:layout_below="@+id/lnr2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_account_box_24dp">
+    </ImageButton>
 
 
 

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -27,15 +28,20 @@ public class SignUp extends AppCompatActivity {
     EditText txtId;
     EditText txtPass;
 
-    static final ArrayList<Estudiante> students = new ArrayList<>();
+    Archivos archivos;
+
+    ArrayList<Estudiante> users = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         connect();
+        archivos = new Archivos(getApplicationContext(), "accounts.txt");
+        users = getListaUsuarios();
         setVideo();
         signUp();
+
     }
 
     public void connect()
@@ -75,37 +81,53 @@ public class SignUp extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(verifyId())
+
+                String name = txtNom.getText().toString().trim();
+                String lastname = txtApe.getText().toString().trim();
+                String id = txtId.getText().toString().trim();
+                String pass = txtPass.getText().toString().trim();
+
+                if(name.isEmpty() || lastname.isEmpty() || id.isEmpty() || pass.isEmpty()){
+                    Toast.makeText(SignUp.this, "Debe llenar todos los campos", Toast.LENGTH_SHORT).show();
+                }
+                else if(verifyId(id))
                 {
+                    txtNom.setText("");
+                    txtApe.setText("");
+                    txtId.setText("");
+                    txtPass.setText("");
                     Toast.makeText(getApplicationContext(), "El estudiante ya se encuentra en el sistema", Toast.LENGTH_LONG).show();
                 }
                 else
                 {
-                    students.add(new Estudiante(txtNom.getText().toString(), txtApe.getText().toString(), txtId.getText().toString(), txtPass.getText().toString()));
-                    Toast.makeText(getApplicationContext(), "Registro exitoso", Toast.LENGTH_LONG).show();
-                    Intent intent = Login.launcheME(SignUp.this);
-                    startActivity(intent);
+                    txtNom.setText("");
+                    txtApe.setText("");
+                    txtId.setText("");
+                    txtPass.setText("");
+
+                    String text = name + "\n" + lastname + "\n" + id + "\n" + pass + "\n";
+
+                    try {
+                        archivos.escribir(text);
+                        Toast.makeText(getApplicationContext(), "Registro exitoso", Toast.LENGTH_LONG).show();
+                        finish();
+                    }catch(Exception e){
+                        Log.e("", e.getMessage());
+                    }
                 }
 
             }
         });
     }
 
-    public boolean verifyId()
-    {
-        boolean found = false;
-        for (Estudiante s:students)
-        {
-            if(txtId.getText().toString().equals(s.getId()))
-            {
-                found = true;
-                break;
+    private boolean verifyId(String id){
+        for(int i = 0; i < users.size(); i++){
+            if(users.get(i).getId().equals(id.trim())){
+                return true;
             }
         }
-        return found;
+        return false;
     }
-
-
 
     protected void onPause() {
 
@@ -124,5 +146,9 @@ public class SignUp extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         player.release();
+    }
+
+    private ArrayList<Estudiante> getListaUsuarios(){
+        return archivos.listaUsuarios();
     }
 }

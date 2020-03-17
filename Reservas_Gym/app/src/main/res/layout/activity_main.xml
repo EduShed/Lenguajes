@@ -16,6 +16,7 @@
         app:srcCompat="@drawable/udem_logo2" />
 
     <LinearLayout
+        android:id="@+id/lnr"
         android:layout_width="3500dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/principalLogo"
