@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="consejos">
+        <item> Lavarse las manos antes y después de salir de casa </item>
+        <item> Evitar tocarse los ojos, la nariz y la boca sin antes haberse lavado las manos</item>
+        <item> Mantener una distancia de mínimo dos metros ante una persona infectada</item>
+        <item> Al toser, hacerlo en un panuñelo desechable o en el hueco del codo</item>
+    </string-array>
+</resources>

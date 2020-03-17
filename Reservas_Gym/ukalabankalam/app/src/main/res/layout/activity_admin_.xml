@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#253A4B"
+    tools:context=".Admin_Activity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imgTop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:srcCompat="@drawable/top"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="-49dp"
+            tools:layout_editor_absoluteY="-4dp" />
+        <ImageView
+            android:id="@+id/imgbtm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            android:rotation="180"
+            app:srcCompat="@drawable/top"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="-45dp"
+            tools:layout_editor_absoluteY="-4dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imgLogo4"
+        android:layout_width="150dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="95dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/udem_logo"></ImageView>
+
+    <ImageButton
+        android:id="@+id/imgBtn_verReserva"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerInParent="true"
+        android:alpha="0.0"
+        android:background="@android:color/transparent"
+        android:scaleType="centerInside"
+        android:src="@drawable/ver_reservas"></ImageButton>
+
+    <TextView
+        android:id="@+id/txtVer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/aladin"
+        android:textSize="20dp"
+        android:text="Ver reservas"
+        android:alpha="0.0"
+        android:layout_below="@id/imgBtn_verReserva"
+        android:layout_centerHorizontal="true"
+        android:textColor="#059EE8"></TextView>
+
+    <TextView
+        android:id="@+id/txtadmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="390dp"
+        android:fontFamily="@font/aladin"
+        android:textSize="25dp"
+        android:alpha="0.0"
+        android:text="Admin"
+        android:layout_below="@+id/imgLogo4"
+        android:layout_centerHorizontal="true"></TextView>
+
+</RelativeLayout>

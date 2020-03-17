@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <VideoView
+            android:id="@+id/video_bg2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:drawable/screen_background_dark_transparent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+        </VideoView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imgLogo2"
+        android:layout_width="190dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="70dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/udem_logo"
+        android:layout_marginBottom="20dp"></ImageView>
+
+    <EditText
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtNombre"
+        android:hint="Nombre"
+        android:fontFamily="@font/aladin"
+        android:textSize="20dp"
+        android:background="@drawable/shape_text"
+        android:layout_below="@+id/imgLogo2"
+        android:paddingLeft="20dp"
+        android:layout_centerHorizontal="true"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="10dp"></EditText>
+
+    <EditText
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtApellido"
+        android:hint="Apellido"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/aladin"
+        android:textSize="20dp"
+        android:layout_below="@+id/txtNombre"
+        android:background="@drawable/shape_text"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="10dp"></EditText>
+    <EditText
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtID"
+        android:hint="ID"
+        android:fontFamily="@font/aladin"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/txtApellido"
+        android:background="@drawable/shape_text"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="10dp"
+        android:inputType="number"></EditText>
+    <EditText
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtPassword"
+        android:hint="Contraseña"
+        android:fontFamily="@font/aladin"
+        android:textSize="20dp"
+        android:layout_below="@+id/txtID"
+        android:background="@drawable/shape_text"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="10dp"
+        android:inputType="textPassword"></EditText>
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_btn_design"
+        android:text="Crear cuenta"
+        android:layout_below="@+id/txtPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></Button>
+
+
+</RelativeLayout>
