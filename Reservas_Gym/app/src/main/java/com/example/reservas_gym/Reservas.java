@@ -27,14 +27,19 @@ TextView txtTip;
 FadingTextView txtTipView;
 TextView txtName;
 TextView reservatxt;
+String[] userData = new String[3];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservas);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        Bundle recup = getIntent().getExtras();
+        userData = recup.getStringArray("userData");
         connect();
         animations();
         launchSignUp();
+
     }
 
     private void connect()
@@ -47,6 +52,7 @@ TextView reservatxt;
         txtName = findViewById(R.id.txtName);
         imgAgenda = findViewById(R.id.imgBtn_Agenda);
         reservatxt = findViewById(R.id.txt_reserva);
+        txtName.setText(userData[1] + " " + userData[2]);
     }
     private void animations()
     {
@@ -74,14 +80,10 @@ TextView reservatxt;
             @Override
             public void onClick(View v) {
                 Intent intent = ReservaActivity.launcheME(Reservas.this);
+                intent.putExtra("userData", userData);
                 startActivity(intent);
             }
         });
 
     }
-    private void darConsejo()
-    {
-
-    }
-
 }

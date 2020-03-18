@@ -24,9 +24,12 @@ public class Login extends AppCompatActivity {
     int playerVidPos;
     Button btnSignUp, btnLogin;
     ArrayList<Estudiante> listaUsuarios = new ArrayList<>();
+    String[] userData = new String[3];
     Archivos archivos;
     EditText txtId, txtPass;
-    ImageButton admin;
+    static final String account = "123";
+    static final String password = "gymudem";
+
 
 
     @Override
@@ -38,14 +41,7 @@ public class Login extends AppCompatActivity {
         setVideo();
         launchSignUp();
         verifyUser();
-        archivos = new Archivos(getApplicationContext(), "accounts.txt");
-        listaUsuarios = getListaUsuarios();
-        admin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                launchAdminPanel();
-            }
-        });
+        initializeList();
     }
 
     public void launchAdminPanel()
@@ -61,7 +57,6 @@ public class Login extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
         txtId = findViewById(R.id.txtCedula);
         txtPass = findViewById(R.id.txtContraseña);
-        admin = findViewById(R.id.imgAdmin);
     }
     public void setVideo()
     {
@@ -98,8 +93,9 @@ public class Login extends AppCompatActivity {
 
     }
 
-    private void launchReserva(){
+    private void launchReserva(String[] user){
         Intent intent = Reservas.launcheME(Login.this);
+        intent.putExtra("userData", user);
         startActivity(intent);
     }
 
@@ -109,22 +105,32 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 String id = txtId.getText().toString().trim();
                 String pass = txtPass.getText().toString().trim();
-                if(id.isEmpty() || pass.isEmpty()){
+                String name = nameSearchedById(id);
+                String lastname = lastnameSearchedById(id);
+
+                if(id.isEmpty() || pass.isEmpty()) {
                     txtId.setText("");
                     txtPass.setText("");
-                    Toast.makeText(Login.this, "Debe llenar todos los campos obligatoriamente", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Debe llenar todos los espacios obligatoriamente", Toast.LENGTH_SHORT).show();
+                }else if(account.equals(id) && password.equals(pass)){
+                    txtId.setText("");
+                    txtPass.setText("");
+                    Toast.makeText(Login.this, "Bienvenido administrador", Toast.LENGTH_SHORT).show();
+                    launchAdminPanel();
                 }else{
-                   /** if(encontroUsuarioYContraseña(id, pass)){
+                    if(foundUserAndPassword(id, pass)){
                         txtId.setText("");
                         txtPass.setText("");
                         Toast.makeText(Login.this, "Logueado exitosamente", Toast.LENGTH_SHORT).show();
-                        launchReserva();
+                        userData[0] = id;
+                        userData[1] = name;
+                        userData[2] = lastname;
+                        launchReserva(userData);
                     }else{
                         txtId.setText("");
                         txtPass.setText("");
                         Toast.makeText(Login.this, "Cédula o contraseña incorrecta", Toast.LENGTH_SHORT).show();
-                    }**/
-                   launchReserva();
+                    }
                 }
             }
         });
@@ -152,7 +158,7 @@ public class Login extends AppCompatActivity {
         player.release();
     }
 
-    private boolean encontroUsuarioYContraseña(String id, String pass){
+    private boolean foundUserAndPassword(String id, String pass){
         for(int i = 0; i < listaUsuarios.size(); i++){
             if(listaUsuarios.get(i).getId().equals(id.trim())){
                 if(listaUsuarios.get(i).getPass().equals(pass.trim())){
@@ -163,6 +169,29 @@ public class Login extends AppCompatActivity {
             }
         }
         return false;
+    }
+
+    private String nameSearchedById(String id){
+        for(int i = 0; i < listaUsuarios.size(); i++){
+            if(listaUsuarios.get(i).getId().equals(id.trim())){
+                return listaUsuarios.get(i).getNombre();
+            }
+        }
+        return "";
+    }
+
+    private String lastnameSearchedById(String id){
+        for(int i = 0; i < listaUsuarios.size(); i++){
+            if(listaUsuarios.get(i).getId().equals(id.trim())){
+                return listaUsuarios.get(i).getApellido();
+            }
+        }
+        return "";
+    }
+
+    private void initializeList(){
+        archivos = new Archivos(getApplicationContext(), "accounts.txt");
+        listaUsuarios = getListaUsuarios();
     }
 
     private ArrayList<Estudiante> getListaUsuarios(){

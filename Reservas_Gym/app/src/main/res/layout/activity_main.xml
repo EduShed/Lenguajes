@@ -31,9 +31,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
             android:text="Bienvenidos"
-            android:textSize="50dp"
-            android:textColor="#ffffff"
-            android:fontFamily="@font/aladin"></TextView>
+            android:textSize="45dp"
+            android:textColor="#ffffff"></TextView>
 
         <TextView
             android:layout_width="match_parent"
@@ -41,8 +40,7 @@
             android:layout_marginLeft="17dp"
             android:text="Reservas gimnasio UdeM"
             android:textSize="19dp"
-            android:textColor="@android:color/darker_gray"
-            android:fontFamily="@font/aladin"></TextView>
+            android:textColor="@android:color/darker_gray"></TextView>
         <Button
             android:id="@+id/btn_next"
             android:layout_width="130dp"
@@ -50,8 +48,7 @@
             android:layout_marginTop="50dp"
             android:background="@drawable/login_btn_design"
             android:text="Continuar"
-            android:textSize="20dp"
-            android:fontFamily="@font/aladin">
+            android:textSize="15dp">
         </Button>
     </LinearLayout>
 </RelativeLayout>

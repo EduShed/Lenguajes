@@ -30,9 +30,57 @@ public class Archivos {
             fos.close();
         } catch (FileNotFoundException e) {
             Log.e("", e.getMessage());
-        } catch (IOException ex) {
-            Log.e("", ex.getMessage());
+        } catch (Exception e) {
+            Log.e("", e.getMessage());
         }
+    }
+
+    public ArrayList<Reserva> listaReservas(){
+        ArrayList<Reserva> lista = new ArrayList<>();
+        String lectura = "";
+        String day = "";
+        String month = "";
+        String year = "";
+        String name = "";
+        String lastname = "";
+        String id = "";
+        String date = "";
+        try {
+            int cont = 0;
+            fis = ctx.openFileInput(Archivo);
+            int i = 2;
+            char caracter;
+            while (i > 0) {
+                i = fis.read();
+                caracter = (char) i;
+                lectura += caracter;
+                if (i == '\n') {
+                    if(cont == 0){
+                        date = lectura.trim() + "/";
+                    }else if(cont == 1){
+                        date = lectura.trim() + "/";
+                    }else if(cont == 2){
+                        date = lectura.trim();
+                    }
+                    if(cont == 3){
+                        id = lectura.trim();
+                    }else if(cont == 4){
+                        name = lectura.trim();
+                    }
+                    else if (cont == 5)
+                    {
+                        lastname = lectura.trim();
+                        lista.add(new Reserva(name, lastname, id, date));
+                        cont =-1;
+                    }
+                    lectura = "";
+                    cont++;
+                }
+            }
+        } catch (Exception e) {
+            Log.e("", e.getMessage());
+        }
+        return lista;
     }
 
     public ArrayList<Estudiante> listaUsuarios() {

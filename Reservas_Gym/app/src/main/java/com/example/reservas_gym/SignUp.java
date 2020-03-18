@@ -37,8 +37,7 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         connect();
-        archivos = new Archivos(getApplicationContext(), "accounts.txt");
-        users = getListaUsuarios();
+        initializeList();
         setVideo();
         signUp();
 
@@ -90,7 +89,7 @@ public class SignUp extends AppCompatActivity {
                 if(name.isEmpty() || lastname.isEmpty() || id.isEmpty() || pass.isEmpty()){
                     Toast.makeText(SignUp.this, "Debe llenar todos los campos", Toast.LENGTH_SHORT).show();
                 }
-                else if(verifyId(id))
+                else if(verifyId(id) || id.equals("123"))
                 {
                     txtNom.setText("");
                     txtApe.setText("");
@@ -146,6 +145,11 @@ public class SignUp extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         player.release();
+    }
+
+    private void initializeList(){
+        archivos = new Archivos(getApplicationContext(), "accounts.txt");
+        users = getListaUsuarios();
     }
 
     private ArrayList<Estudiante> getListaUsuarios(){

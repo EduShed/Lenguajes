@@ -44,4 +44,9 @@ public class Reserva {
     public void setDate(String date) {
         this.date = date;
     }
+
+    public String getReservationInfo()
+    {
+        return (name + " " + lastname + " \n" + "Con ID: " + id + "\n" + "Fecha de reserva: " + date);
+    }
 }

@@ -114,17 +114,6 @@
             android:background="@android:color/transparent"></Button>
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/imgAdmin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:layout_below="@+id/lnr2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/ic_account_box_24dp">
-    </ImageButton>
-
 
 
 
