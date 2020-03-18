@@ -38,9 +38,7 @@ public class Archivos {
     public ArrayList<Reserva> listaReservas(){
         ArrayList<Reserva> lista = new ArrayList<>();
         String lectura = "";
-        String day = "";
-        String month = "";
-        String year = "";
+        String hour = "";
         String name = "";
         String lastname = "";
         String id = "";
@@ -58,19 +56,20 @@ public class Archivos {
                     if(cont == 0){
                         date = lectura.trim() + "/";
                     }else if(cont == 1){
-                        date = lectura.trim() + "/";
-                    }else if(cont == 2){
-                        date = lectura.trim();
-                    }
-                    if(cont == 3){
-                        id = lectura.trim();
+                        date += lectura.trim() + "/";
+                    }else if(cont == 2) {
+                        date += lectura.trim();
+                    }else if(cont == 3){
+                        hour = lectura.trim();
                     }else if(cont == 4){
+                        id = lectura.trim();
+                    }else if(cont == 5){
                         name = lectura.trim();
                     }
-                    else if (cont == 5)
+                    else if (cont == 6)
                     {
                         lastname = lectura.trim();
-                        lista.add(new Reserva(name, lastname, id, date));
+                        lista.add(new Reserva(name, lastname, id, date, hour));
                         cont =-1;
                     }
                     lectura = "";

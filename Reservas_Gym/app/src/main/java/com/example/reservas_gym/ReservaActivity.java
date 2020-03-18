@@ -30,7 +30,7 @@ public class ReservaActivity extends AppCompatActivity {
     Button btnReserve;
     TextView txtDate;
     TextView time;
-    String date, dayPicked, monthPicked, yearPicked, userName, userLastName, userId;
+    String date, dayPicked, monthPicked, yearPicked, hourPicked;
     String[] userData = new String[3];
     RadioGroup rgTimes;
     RadioButton selectedRd, rb1, rb2, rb3, rb4, rb5, rb6;
@@ -68,7 +68,8 @@ public class ReservaActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 id = rgTimes.getCheckedRadioButtonId();
                 selectedRd = findViewById(id);
-                time.setText("Hora: " + selectedRd.getText());
+                hourPicked = selectedRd.getText().toString().trim();
+                time.setText("Hora: " + hourPicked);
             }
         });
         doReserve();
@@ -90,7 +91,7 @@ public class ReservaActivity extends AppCompatActivity {
         String actualDay = calendario.get(Calendar.DAY_OF_MONTH) + 1 + "";
         String actualMonth = calendario.get(Calendar.MONTH) + 1 + "";
         String actualYear = calendario.get(Calendar.YEAR) + "";
-        text = actualDay + "\n" + actualMonth + "\n" + actualYear + "\n" + userData[0] + "\n" + userData[1] + "\n" + userData[2] + "\n";
+        text = actualDay + "\n" + actualMonth + "\n" + actualYear + "\n" +  hourPicked + "\n"  + userData[0] + "\n" + userData[1] + "\n" + userData[2] + "\n";
 
         if(datePicked.isEmpty() || timePicked.isEmpty()){
             Toast.makeText(ReservaActivity.this, "Debes seleccionar obligatoriamente una fecha y una hora", Toast.LENGTH_SHORT).show();
