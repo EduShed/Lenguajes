@@ -57,6 +57,7 @@
     <com.tomer.fadingtextview.FadingTextView
         android:id="@+id/txtTipText"
         android:layout_width="350dp"
+        android:textAlignment="center"
         android:layout_height="wrap_content"
         android:fontFamily="@font/aladin"
         android:layout_marginTop="15dp"
@@ -93,7 +94,7 @@
         android:id="@+id/txtName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="340dp"
+        android:layout_marginTop="290dp"
         android:fontFamily="@font/aladin"
         android:textSize="25dp"
         android:alpha="0.0"
