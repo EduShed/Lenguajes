@@ -1,12 +1,18 @@
 package com.example.reservas_gym;
 
 public class Reserva {
+    /*
+    Atributos de la reserva
+     */
     private String name;
     private String lastname;
     private String id;
     private String date;
     private String hour;
 
+    /*
+    Constructor de la clase
+     */
     public Reserva(String name, String lastname, String id, String date, String hour){
         setName(name);
         setLastname(lastname);
@@ -14,6 +20,10 @@ public class Reserva {
         setDate(date);
         setHour(hour);
     }
+
+    /*
+    Encapsulamiento de los atributos de la clase
+     */
 
     public String getName() {
         return name;

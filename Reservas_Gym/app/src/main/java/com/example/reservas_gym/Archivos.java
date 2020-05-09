@@ -23,6 +23,9 @@ public class Archivos {
         this.Archivo = archivo;
     }
 
+    /*
+    Escribir el texto que sea pasado como parámetro al archivo plano inicializado en el constructor de la clase
+     */
     public void escribir(String textArchivo) throws IOException {
         try {
             fos = ctx.openFileOutput(Archivo, Context.MODE_APPEND);
@@ -35,6 +38,10 @@ public class Archivos {
         }
     }
 
+    /*
+    Retorna una lista que contiene todas las reservas leídas del archivo plano
+    Cada reserva en el archivo plano se lee por espacios
+     */
     public ArrayList<Reserva> listaReservas(){
         ArrayList<Reserva> lista = new ArrayList<>();
         String lectura = "";
@@ -82,6 +89,10 @@ public class Archivos {
         return lista;
     }
 
+    /*
+    Retorna una lista que contiene todos los usuarios leídos del archivo plano
+    Cada usuario en el archivo plano se lee por espacios
+     */
     public ArrayList<Estudiante> listaUsuarios() {
         ArrayList<Estudiante> lista = new ArrayList<>();
         String lectura = "";

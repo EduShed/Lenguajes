@@ -50,6 +50,10 @@ public class Admin_Activity extends AppCompatActivity {
         txtAdmin = findViewById(R.id.txtadmin);
         ver = findViewById(R.id.txtVer);
     }
+
+    /*
+    Hacer animación en el admin activity
+     */
     private void animate()
     {
         top.animate().translationY(-1500).setDuration(600).setStartDelay(95);
@@ -59,12 +63,16 @@ public class Admin_Activity extends AppCompatActivity {
         viewReg.animate().alpha(1).setDuration(400).setStartDelay(400);
         ver.animate().alpha(1).setDuration(400).setStartDelay(400);
     }
+
+    /*
+    Método de la clase Reserva donde obtiene toda la información de la reserva
+     */
     private String getReservas(ArrayList<Reserva> list)
     {
-        int cont = 0;
         String info= "";
         for(Reserva e:list)
         {
+            int cont = 0;
             info += e.getReservationInfo();
             cont++;
             if(cont == 1){
@@ -73,6 +81,10 @@ public class Admin_Activity extends AppCompatActivity {
         }
         return info;
     }
+
+    /*
+    Se crea un Alert dialog para mostrar las reservas con un textview (configurado en reserva_view_layout.xml)
+     */
     private void showReservas()
     {
         LayoutInflater inflater = this.getLayoutInflater();
@@ -91,6 +103,10 @@ public class Admin_Activity extends AppCompatActivity {
         alert = builder.create();
         alert.show();
     }
+
+    /*
+    Intent para lanzar el admin activity
+     */
     public static Intent launcheME(Context ctx)
     {
         return new Intent(ctx, Admin_Activity.class);

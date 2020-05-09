@@ -52,6 +52,8 @@ public class SignUp extends AppCompatActivity {
         txtId = findViewById(R.id.txtID);
         txtPass = findViewById(R.id.txtPassword);
     }
+
+
     public void setVideo()
     {
         Uri vidUri = Uri.parse("android.resource://" +getPackageName()+ "/" +R.raw.unidem);
@@ -70,6 +72,10 @@ public class SignUp extends AppCompatActivity {
             }
         });
     }
+
+    /*
+    Intent que lanza este activity
+     */
     public static Intent launcheME(Context ctx)
     {
         return new Intent(ctx, SignUp.class);
@@ -77,6 +83,10 @@ public class SignUp extends AppCompatActivity {
 
     public void signUp()
     {
+        /*
+        Verifica si existe un usuario con el id ingresado, si no existe entonces se escribe el nuevo usuario en el archivo plano, también verifica
+        si los campos de los Edit Texts están vacíos
+         */
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,8 +114,8 @@ public class SignUp extends AppCompatActivity {
                     txtId.setText("");
                     txtPass.setText("");
 
-                    String text = name + "\n" + lastname + "\n" + id + "\n" + pass + "\n";
 
+                    String text = name + "\n" + lastname + "\n" + id + "\n" + pass + "\n";
                     try {
                         archivos.escribir(text);
                         Toast.makeText(getApplicationContext(), "Registro exitoso", Toast.LENGTH_LONG).show();
@@ -119,6 +129,9 @@ public class SignUp extends AppCompatActivity {
         });
     }
 
+    /*
+    Verifica si encuentra un Id igual al que se ingresa como parámetro
+     */
     private boolean verifyId(String id){
         for(int i = 0; i < users.size(); i++){
             if(users.get(i).getId().equals(id.trim())){
@@ -147,11 +160,17 @@ public class SignUp extends AppCompatActivity {
         player.release();
     }
 
+    /*
+    Asigna a la lista que está como variable global la lista que tiene los usuarios leídos en el archivo plano
+     */
     private void initializeList(){
         archivos = new Archivos(getApplicationContext(), "accounts.txt");
         users = getListaUsuarios();
     }
 
+    /*
+    Retorna la lista de los usuarios leídos en el archivo plano
+     */
     private ArrayList<Estudiante> getListaUsuarios(){
         return archivos.listaUsuarios();
     }

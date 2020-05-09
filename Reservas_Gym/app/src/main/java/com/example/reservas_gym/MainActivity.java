@@ -26,6 +26,9 @@ Button btnNext;
 
     }
 
+    /*
+    Intent que lanza el menú de login
+     */
     public void LaunchReserva()
     {
         Intent intent = Login.launcheME(MainActivity.this);

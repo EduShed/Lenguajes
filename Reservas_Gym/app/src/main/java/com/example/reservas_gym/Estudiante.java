@@ -1,11 +1,17 @@
 package com.example.reservas_gym;
 
 public class Estudiante {
+    /*
+    Atributos del Estudiante
+     */
     String nombre;
     String apellido;
     String id;
     String pass;
 
+    /*
+    Constructor
+     */
     public Estudiante(String nombre, String apellido, String id, String pass)
     {
         this.nombre= nombre;;
@@ -13,6 +19,10 @@ public class Estudiante {
         this.id = id;
         this.pass = pass;
     }
+
+    /*
+    Encapsulamiento de los atributos
+     */
 
     public String getNombre() {
         return nombre;

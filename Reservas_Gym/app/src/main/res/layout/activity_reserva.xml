@@ -3,150 +3,259 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#253A4B"
+    android:background="#030929"
     android:layout_height="match_parent"
     tools:context=".ReservaActivity">
 
+    <ViewFlipper
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+
+    </ViewFlipper>
+    <ImageView
+        android:id="@+id/imgTennisPlayer"
+        android:alpha="1"
+        android:layout_width="450dp"
+        android:layout_height="450dp"
+        android:layout_marginTop="15dp"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        android:src="@drawable/sportimg"></ImageView>
+
     <TextView
-        android:id="@+id/txtSelect"
+        android:id="@+id/P1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
+        android:layout_marginLeft="280dp"
+        android:layout_marginTop="120dp"
+        android:alpha="0"
         android:fontFamily="@font/aladin"
-        android:layout_marginTop="80dp"
-        android:textSize="25dp"
-        android:text="Seleccione una fecha"
-        android:textColor="#059EE8"></TextView>
+        android:text="You"
+        android:textSize="50dp"
+        android:textStyle="bold"></TextView>
 
-    <CalendarView
-        android:id="@+id/calendar"
-        android:layout_width="250dp"
-        android:layout_below="@+id/txtSelect"
-        android:layout_marginTop="20dp"
-        android:background="@android:drawable/screen_background_dark_transparent"
-        android:layout_height="300dp"
-        android:layout_marginLeft="20dp"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="30dp" />
+    <TextView
+        android:id="@+id/P2"
+        android:alpha="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="245dp"
+        android:layout_marginTop="165dp"
+        android:fontFamily="@font/acme"
+        android:text="are"
+        android:textSize="45dp"></TextView>
+
+    <TextView
+        android:id="@+id/P3"
+        android:alpha="0"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="212dp"
+        android:text="Stronger"
+        android:fontFamily="@font/aladin"
+        android:textStyle="italic"
+        android:textSize="55dp"></TextView>
+
+    <TextView
+        android:id="@+id/P4"
+        android:alpha="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="240dp"
+        android:layout_marginTop="270dp"
+        android:fontFamily="@font/acme"
+        android:text="than you"
+        android:textSize="40dp"></TextView>
+
+    <TextView
+        android:id="@+id/P5"
+        android:alpha="0"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="280dp"
+        android:layout_marginTop="320dp"
+        android:text="Think"
+        android:fontFamily="@font/aladin"
+        android:textStyle="bold"
+        android:textSize="50dp"></TextView>
+
+    <ImageView
+        android:id="@+id/optionsPanel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/gym_student_panel_moreblurred"
+        android:layout_marginTop="480dp"></ImageView>
 
     <LinearLayout
-        android:id="@+id/lnr3"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/calendar"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="150dp">
+        android:orientation="horizontal"
+        android:layout_alignTop="@id/optionsPanel">
 
-        <RadioGroup
-            android:id="@+id/rgTimes"
+        <ImageView
+            android:id="@+id/imgUserLogo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/student_user_icon"></ImageView>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
-            android:gravity="center"
             android:layout_height="wrap_content"
-            >
+            android:orientation="vertical">
+
             <TextView
+                android:id="@+id/txtNombreEstudiante"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/aladin"
+                android:text="Nombre Estudiante"
+                android:textStyle="bold"
                 android:textSize="25dp"
-                android:text="Hora"
-                android:textColor="#059EE8"></TextView>
+                android:fontFamily="@font/acme"></TextView>
 
-            <RadioButton
-                android:id="@+id/rb_810"
+            <TextView
+                android:id="@+id/txtCarreraEstudiante"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="8 - 10"
-                android:textSize="20dp">
+                android:text="Carrera"
+                android:fontFamily="@font/acme"
+                android:textSize="25dp"></TextView>
 
-            </RadioButton>
-
-            <RadioButton
-                android:id="@+id/rb_1012"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="10 - 12"
-                android:textSize="20dp">
-
-            </RadioButton>
-
-            <RadioButton
-                android:id="@+id/rb_1214"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="12 - 14"
-                android:textSize="20dp">
-
-            </RadioButton>
-
-            <RadioButton
-                android:id="@+id/rb_1416"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="14 - 16"
-                android:textSize="20dp">
-
-            </RadioButton>
-
-            <RadioButton
-                android:id="@+id/rb_1618"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="16 - 18"
-                android:textSize="20dp">
-
-            </RadioButton>
-
-            <RadioButton
-                android:id="@+id/rb_1820"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="18 - 20"
-                android:textSize="20dp">
-
-            </RadioButton>
-        </RadioGroup>
+        </LinearLayout>
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_Reserve"
-        android:layout_centerHorizontal="true"
-        android:layout_width="120dp"
-        android:layout_below="@+id/calendar"
+    <com.varunest.sparkbutton.SparkButton
+        android:id="@+id/btnReservar"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignTop="@+id/optionsPanel"
+        android:layout_marginTop="90dp"
+        app:sparkbutton_activeImage="@drawable/btn_reservar"
+        app:sparkbutton_inActiveImage="@drawable/btn_reservar"
+        app:sparkbutton_iconSize="120dp"
+        app:sparkbutton_primaryColor="@color/primary_color"
+        app:sparkbutton_secondaryColor="@color/secondary_color" />
+
+    <com.varunest.sparkbutton.SparkButton
+        android:id="@+id/btn_verReservas"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_toEndOf="@+id/btnReservar"
+        android:layout_marginTop="90dp"
+        android:layout_alignTop="@+id/optionsPanel"
+        app:sparkbutton_activeImage="@drawable/btn_ver_reservas"
+        app:sparkbutton_inActiveImage="@drawable/btn_ver_reservas"
+        app:sparkbutton_iconSize="120dp"
+        app:sparkbutton_primaryColor="@color/primary_color"
+        app:sparkbutton_secondaryColor="@color/secondary_color" />
+
+    <LinearLayout
+        android:id="@+id/btnsLayout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/login_btn_design"
-        android:layout_marginTop="60dp"
-        android:text="Reservar" />
+        android:orientation="horizontal"
+        android:layout_marginTop="150dp"
+        android:layout_centerHorizontal="true">
+
+        <com.varunest.sparkbutton.SparkButton
+            android:id="@+id/btnCalendar"
+            android:alpha="0"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:sparkbutton_activeImage="@drawable/clanedar_icon"
+            app:sparkbutton_inActiveImage="@drawable/clanedar_icon"
+            app:sparkbutton_iconSize="80dp"
+            app:sparkbutton_primaryColor="@color/primary_color"
+            app:sparkbutton_secondaryColor="@color/secondary_color" />
+
+        <com.varunest.sparkbutton.SparkButton
+            android:id="@+id/btnClock"
+            android:alpha="0"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="30dp"
+            android:layout_alignTop="@+id/optionsPanel"
+            app:sparkbutton_activeImage="@drawable/clock3"
+            app:sparkbutton_inActiveImage="@drawable/clock3"
+            app:sparkbutton_iconSize="100dp"
+            app:sparkbutton_primaryColor="@color/primary_color"
+            app:sparkbutton_secondaryColor="@color/secondary_color" />
+
+    </LinearLayout>
+
 
     <ImageView
-        android:id="@+id/imgbottom"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toBottomOf="parent"
-        android:rotation="180"
-        app:srcCompat="@drawable/top"
-        android:translationY="570dp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="-45dp"
-        tools:layout_editor_absoluteY="-4dp" />
-    <TextView
-        android:id="@+id/txtDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:textColor="#fff"
-        android:fontFamily="@font/aladin"
-        android:textSize="30dp"
-        android:layout_marginTop="650dp"></TextView>
+        android:id="@+id/completed1"
+        android:alpha="0"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/btnsLayout"
+        android:layout_marginLeft="118dp"
+        android:src="@drawable/task_not_completed"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"></ImageView>
 
-    <TextView
-        android:id="@+id/txtTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/completed2"
+        android:alpha="0"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/btnsLayout"
+        android:layout_toEndOf="@id/completed1"
+        android:layout_marginLeft="75dp"
+        android:src="@drawable/task_not_completed"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"></ImageView>
+
+    <com.varunest.sparkbutton.SparkButton
+        android:id="@+id/btnHacerReserva"
+        android:alpha="0"
         android:layout_centerHorizontal="true"
-        android:textColor="#fff"
-        android:layout_below="@+id/txtDate"
-        android:fontFamily="@font/aladin"
-        android:textSize="30dp"></TextView>
+        android:layout_below="@+id/btnsLayout"
+        android:layout_width="150dp"
+        android:layout_marginTop="20dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="30dp"
+        app:sparkbutton_activeImage="@drawable/empty_reservar_button"
+        app:sparkbutton_inActiveImage="@drawable/empty_reservar_button"
+        app:sparkbutton_iconSize="150dp"
+        app:sparkbutton_primaryColor="@color/primary_color"
+        app:sparkbutton_secondaryColor="@color/secondary_color" />
+
+    <com.varunest.sparkbutton.SparkButton
+        android:id="@+id/btnUserMenu"
+        android:layout_alignTop="@id/optionsPanel"
+        android:layout_alignRight="@id/optionsPanel"
+        android:layout_marginRight="37dp"
+        android:layout_marginTop="27dp"
+        android:layout_width="50dp"
+        android:layout_height="55dp"
+        app:sparkbutton_activeImage="@drawable/menu_grid3"
+        app:sparkbutton_inActiveImage="@drawable/menu_grid3"
+        app:sparkbutton_iconSize="35dp"
+        app:sparkbutton_primaryColor="@color/primary_color"
+        app:sparkbutton_secondaryColor="@color/secondary_color" />
+
+
+    <com.varunest.sparkbutton.SparkButton
+        android:id="@+id/btnCancel"
+        android:alpha="0"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="30dp"
+        app:sparkbutton_activeImage="@drawable/cancel_btn"
+        app:sparkbutton_inActiveImage="@drawable/cancel_btn"
+        app:sparkbutton_iconSize="45dp"
+        app:sparkbutton_primaryColor="@color/primary_color"
+        app:sparkbutton_secondaryColor="@color/secondary_color" />
 
 </RelativeLayout>

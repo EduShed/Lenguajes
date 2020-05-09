@@ -30,19 +30,21 @@ public class Login extends AppCompatActivity {
     static final String account = "123";
     static final String password = "gymudem";
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         connect();
         setVideo();
         launchSignUp();
         verifyUser();
     }
 
+    /*
+    Intent que lleva al Menú del administrador
+     */
     public void launchAdminPanel()
     {
         Intent intent = Admin_Activity.launcheME(Login.this);
@@ -57,6 +59,10 @@ public class Login extends AppCompatActivity {
         txtId = findViewById(R.id.txtCedula);
         txtPass = findViewById(R.id.txtContraseña);
     }
+
+    /*
+    Método para poner el vídeo correctamente en el fondo
+     */
     public void setVideo()
     {
         Uri vidUri = Uri.parse("android.resource://" +getPackageName()+ "/" +R.raw.unidem);
@@ -75,11 +81,18 @@ public class Login extends AppCompatActivity {
             }
         });
     }
+
+    /*
+    Intent para lanzar este activity
+     */
     public static Intent launcheME(Context ctx)
     {
         return new Intent(ctx, Login.class);
     }
 
+    /*
+    Intent para lanzar el menú de registro
+     */
     public void launchSignUp()
     {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
@@ -92,12 +105,18 @@ public class Login extends AppCompatActivity {
 
     }
 
+    /*
+    Intent para lanzar el menú de reservas
+     */
     private void launchReserva(String[] user){
         Intent intent = Reservas.launcheME(Login.this);
         intent.putExtra("userData", user);
         startActivity(intent);
     }
 
+    /*
+    Método que verifica si el usuario existe, es el administrador o los campos de los Edit Texts están vacíos
+     */
     private void verifyUser(){
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,9 +155,6 @@ public class Login extends AppCompatActivity {
         });
     }
 
-
-
-
     protected void onPause() {
 
         super.onPause();
@@ -158,6 +174,9 @@ public class Login extends AppCompatActivity {
         player.release();
     }
 
+    /*
+    Verifica si se encontró el id ingresado como parámetro con su respectiva contraseña
+     */
     private boolean foundUserAndPassword(String id, String pass){
         for(int i = 0; i < listaUsuarios.size(); i++){
             if(listaUsuarios.get(i).getId().equals(id.trim())){
@@ -171,6 +190,9 @@ public class Login extends AppCompatActivity {
         return false;
     }
 
+    /*
+    Encuentra un nombre ligado a un id pasado como parámetro
+     */
     private String nameSearchedById(String id){
         for(int i = 0; i < listaUsuarios.size(); i++){
             if(listaUsuarios.get(i).getId().equals(id.trim())){
@@ -180,6 +202,9 @@ public class Login extends AppCompatActivity {
         return "";
     }
 
+    /*
+    Encuentra un apellido ligado a un id pasado como parámetro
+     */
     private String lastnameSearchedById(String id){
         for(int i = 0; i < listaUsuarios.size(); i++){
             if(listaUsuarios.get(i).getId().equals(id.trim())){
@@ -189,11 +214,17 @@ public class Login extends AppCompatActivity {
         return "";
     }
 
+    /*
+    Al arreglo que está como variable global se le asigna la lista de los usuarios del archivo plano
+     */
     private void initializeList(){
         archivos = new Archivos(getApplicationContext(), "accounts.txt");
         listaUsuarios = getListaUsuarios();
     }
 
+    /*
+    Retorna la lista de los usuarios del archivo plano
+     */
     private ArrayList<Estudiante> getListaUsuarios(){
         return archivos.listaUsuarios();
     }
