@@ -22,24 +22,24 @@ import java.util.ArrayList;
 import java.util.Timer;
 
 public class Reservas extends AppCompatActivity {
-private ImageView tipsPanel;
-private ImageView logo;
-private ImageView bottom;
-private TextView txtTip;
-private FadingTextView txtTipView;
-private TextView txtName;
-private String[] userData = new String[3];
-private CountDownTimer myTimer;
-private ViewFlipper myVF;
+    private ImageView tipsPanel;
+    private ImageView logo;
+    private ImageView bottom;
+    private TextView txtTip;
+    private FadingTextView txtTipView;
+    private TextView txtName;
+    private String[] userData;
+    private CountDownTimer myTimer;
+    private ViewFlipper myVF;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservas);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        connect();
         Bundle recup = getIntent().getExtras();
         userData = recup.getStringArray("userData");
-        connect();
         animations();
     }
 
@@ -51,7 +51,6 @@ private ViewFlipper myVF;
         txtTipView = findViewById(R.id.txtTipText);
         bottom = findViewById(R.id.imgbottom);
         txtName = findViewById(R.id.txtName);
-        txtName.setText(userData[1] + " " + userData[2]);
     }
 
     /*
@@ -75,6 +74,7 @@ private ViewFlipper myVF;
                     @Override
                     public void onFinish() {
                         launchReservas();
+                        finish();
                     }
                 }.start();
             }
@@ -94,8 +94,9 @@ private ViewFlipper myVF;
      */
     public void launchReservas()
     {
-                Intent intent = ReservaActivity.launcheME(Reservas.this);
-                intent.putExtra("userData", userData);
-                startActivity(intent);
+        Intent intent = ReservaActivity.launcheME(Reservas.this);
+        intent.putExtra("userData", userData);
+        startActivity(intent);
     }
+
 }

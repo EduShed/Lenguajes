@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,13 +24,14 @@ public class SignUp extends AppCompatActivity {
     MediaPlayer player;
     int playerVidPos;
 
+    DbHelper helper;
+
     Button btnSignUp;
     EditText txtNom;
     EditText txtApe;
     EditText txtId;
     EditText txtPass;
-
-    Archivos archivos;
+    EditText txtProfession;
 
     ArrayList<Estudiante> users = new ArrayList<>();
     @Override
@@ -37,10 +40,10 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         connect();
+        helper = new DbHelper(getApplicationContext(), "BD", null, 1);
         initializeList();
         setVideo();
         signUp();
-
     }
 
     public void connect()
@@ -51,6 +54,7 @@ public class SignUp extends AppCompatActivity {
         txtApe = findViewById(R.id.txtApellido);
         txtId = findViewById(R.id.txtID);
         txtPass = findViewById(R.id.txtPassword);
+        txtProfession = findViewById(R.id.txtProfession);
     }
 
 
@@ -93,16 +97,18 @@ public class SignUp extends AppCompatActivity {
 
                 String name = txtNom.getText().toString().trim();
                 String lastname = txtApe.getText().toString().trim();
+                String profession = txtProfession.getText().toString().trim();
                 String id = txtId.getText().toString().trim();
                 String pass = txtPass.getText().toString().trim();
 
-                if(name.isEmpty() || lastname.isEmpty() || id.isEmpty() || pass.isEmpty()){
+                if(name.isEmpty() || lastname.isEmpty() || profession.isEmpty() || id.isEmpty() || pass.isEmpty()){
                     Toast.makeText(SignUp.this, "Debe llenar todos los campos", Toast.LENGTH_SHORT).show();
                 }
                 else if(verifyId(id) || id.equals("123"))
                 {
                     txtNom.setText("");
                     txtApe.setText("");
+                    txtProfession.setText("");
                     txtId.setText("");
                     txtPass.setText("");
                     Toast.makeText(getApplicationContext(), "El estudiante ya se encuentra en el sistema", Toast.LENGTH_LONG).show();
@@ -111,22 +117,32 @@ public class SignUp extends AppCompatActivity {
                 {
                     txtNom.setText("");
                     txtApe.setText("");
+                    txtProfession.setText("");
                     txtId.setText("");
                     txtPass.setText("");
 
-
-                    String text = name + "\n" + lastname + "\n" + id + "\n" + pass + "\n";
-                    try {
-                        archivos.escribir(text);
-                        Toast.makeText(getApplicationContext(), "Registro exitoso", Toast.LENGTH_LONG).show();
-                        finish();
-                    }catch(Exception e){
-                        Log.e("", e.getMessage());
-                    }
+                    GuardarEstudiante(id, name, lastname, profession, pass);
+                    finish();
                 }
 
             }
         });
+    }
+
+    private void GuardarEstudiante(String cedula, String name, String lastname, String profession, String password){
+        DbHelper helper = new DbHelper(this, "BD", null, 1);
+        SQLiteDatabase db = helper.getWritableDatabase();
+
+        try{
+            String insert = "INSERT INTO Estudiantes(Cedula, Nombre, Apellido, Carrera, Password) VALUES('"+cedula+"', '"+name+"', '"+lastname+"', '"+profession+"', '"+password+"')";
+
+            db.execSQL(insert);
+            db.close();
+
+            Toast.makeText(this, "Registrado exitosamente", Toast.LENGTH_LONG).show();
+        }catch (Exception ex){
+            Toast.makeText(this, "Error: " + ex.getMessage(),Toast.LENGTH_LONG).show();
+        }
     }
 
     /*
@@ -139,6 +155,29 @@ public class SignUp extends AppCompatActivity {
             }
         }
         return false;
+    }
+
+    private ArrayList<Estudiante> GetDBEstudiantes(){
+        ArrayList<Estudiante> estudiantes = new ArrayList<>();
+        SQLiteDatabase db = helper.getWritableDatabase();
+        String SQL = "Select * from Estudiantes";
+        Cursor c = db.rawQuery(SQL, null);
+        try{
+            if(c.moveToFirst()){
+                do{
+                    String cedula = c.getString(0);
+                    String name = c.getString(1);
+                    String lastname = c.getString(2);
+                    String profession = c.getString(3);
+                    String password = c.getString(4);
+                    estudiantes.add(new Estudiante(name, lastname, profession, cedula, password));
+                }while(c.moveToNext());
+            }
+            db.close();
+        }catch(Exception e){
+            Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+        return estudiantes;
     }
 
     protected void onPause() {
@@ -164,14 +203,6 @@ public class SignUp extends AppCompatActivity {
     Asigna a la lista que está como variable global la lista que tiene los usuarios leídos en el archivo plano
      */
     private void initializeList(){
-        archivos = new Archivos(getApplicationContext(), "accounts.txt");
-        users = getListaUsuarios();
-    }
-
-    /*
-    Retorna la lista de los usuarios leídos en el archivo plano
-     */
-    private ArrayList<Estudiante> getListaUsuarios(){
-        return archivos.listaUsuarios();
+        users = GetDBEstudiantes();
     }
 }

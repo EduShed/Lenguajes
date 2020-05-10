@@ -24,7 +24,6 @@ public class Admin_Activity extends AppCompatActivity {
     ImageButton viewReg;
     TextView txtAdmin;
     TextView ver;
-    Archivos arch = new Archivos(this, "reserves.txt");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,7 +91,6 @@ public class Admin_Activity extends AppCompatActivity {
         final AlertDialog alert;
         View view = inflater.inflate(R.layout.reserva_view_layout,  null);
         TextView res = view.findViewById(R.id.txtView_Res);
-        res.setText(getReservas(arch.listaReservas()));
         builder.setView(view);
         builder.setPositiveButton("Listo!", new DialogInterface.OnClickListener() {
             @Override

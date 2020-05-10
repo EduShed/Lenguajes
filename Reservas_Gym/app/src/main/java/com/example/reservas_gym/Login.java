@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,10 +25,9 @@ public class Login extends AppCompatActivity {
     MediaPlayer player;
     int playerVidPos;
     Button btnSignUp, btnLogin;
-    ArrayList<Estudiante> listaUsuarios = new ArrayList<>();
-    String[] userData = new String[3];
-    Archivos archivos;
+    String[] userData = new String[4];
     EditText txtId, txtPass;
+    DbHelper helper;
     static final String account = "123";
     static final String password = "gymudem";
 
@@ -37,6 +38,7 @@ public class Login extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         connect();
+        helper = new DbHelper(getApplicationContext(), "BD", null, 1);
         setVideo();
         launchSignUp();
         verifyUser();
@@ -121,11 +123,11 @@ public class Login extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                initializeList();
                 String id = txtId.getText().toString().trim();
                 String pass = txtPass.getText().toString().trim();
                 String name = nameSearchedById(id);
                 String lastname = lastnameSearchedById(id);
+                String profession = professionSearchedById(id);
 
                 if(id.isEmpty() || pass.isEmpty()) {
                     txtId.setText("");
@@ -144,6 +146,7 @@ public class Login extends AppCompatActivity {
                         userData[0] = id;
                         userData[1] = name;
                         userData[2] = lastname;
+                        userData[3] = profession;
                         launchReserva(userData);
                     }else{
                         txtId.setText("");
@@ -178,54 +181,80 @@ public class Login extends AppCompatActivity {
     Verifica si se encontró el id ingresado como parámetro con su respectiva contraseña
      */
     private boolean foundUserAndPassword(String id, String pass){
-        for(int i = 0; i < listaUsuarios.size(); i++){
-            if(listaUsuarios.get(i).getId().equals(id.trim())){
-                if(listaUsuarios.get(i).getPass().equals(pass.trim())){
-                    return true;
-                }else{
-                    return false;
-                }
+        String password = "";
+        SQLiteDatabase db = helper.getWritableDatabase();
+        String SQL = "Select Password from Estudiantes Where Cedula ='"+id+"'";
+        Cursor c = db.rawQuery(SQL, null);
+        try{
+            if(c.moveToFirst()){
+                do{
+                    password = c.getString(0);
+                }while(c.moveToNext());
             }
+            db.close();
+        }catch(Exception e){
+            Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
-        return false;
+        return password.equals(pass);
     }
 
     /*
     Encuentra un nombre ligado a un id pasado como parámetro
      */
     private String nameSearchedById(String id){
-        for(int i = 0; i < listaUsuarios.size(); i++){
-            if(listaUsuarios.get(i).getId().equals(id.trim())){
-                return listaUsuarios.get(i).getNombre();
+        String name = "";
+        SQLiteDatabase db = helper.getWritableDatabase();
+        String SQL = "Select Nombre from Estudiantes Where Cedula ='"+id+"'";
+        Cursor c = db.rawQuery(SQL, null);
+        try{
+            if(c.moveToFirst()){
+                do{
+                    name = c.getString(0);
+                }while(c.moveToNext());
             }
+            db.close();
+        }catch(Exception e){
+            Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
-        return "";
+        return name;
     }
 
     /*
     Encuentra un apellido ligado a un id pasado como parámetro
      */
     private String lastnameSearchedById(String id){
-        for(int i = 0; i < listaUsuarios.size(); i++){
-            if(listaUsuarios.get(i).getId().equals(id.trim())){
-                return listaUsuarios.get(i).getApellido();
+        String lastname = "";
+        SQLiteDatabase db = helper.getWritableDatabase();
+        String SQL = "Select Apellido from Estudiantes Where Cedula ='"+id+"'";
+        Cursor c = db.rawQuery(SQL, null);
+        try{
+            if(c.moveToFirst()){
+                do{
+                    lastname = c.getString(0);
+                }while(c.moveToNext());
             }
+            db.close();
+        }catch(Exception e){
+            Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
-        return "";
+        return lastname;
     }
 
-    /*
-    Al arreglo que está como variable global se le asigna la lista de los usuarios del archivo plano
-     */
-    private void initializeList(){
-        archivos = new Archivos(getApplicationContext(), "accounts.txt");
-        listaUsuarios = getListaUsuarios();
-    }
-
-    /*
-    Retorna la lista de los usuarios del archivo plano
-     */
-    private ArrayList<Estudiante> getListaUsuarios(){
-        return archivos.listaUsuarios();
+    private String professionSearchedById(String id){
+        String profession = "";
+        SQLiteDatabase db = helper.getWritableDatabase();
+        String SQL = "Select Carrera from Estudiantes Where Cedula ='"+id+"'";
+        Cursor c = db.rawQuery(SQL, null);
+        try{
+            if(c.moveToFirst()){
+                do{
+                    profession = c.getString(0);
+                }while(c.moveToNext());
+            }
+            db.close();
+        }catch(Exception e){
+            Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+        return profession;
     }
 }

@@ -2,20 +2,22 @@ package com.example.reservas_gym;
 
 public class Estudiante {
     /*
-    Atributos del Estudiante
-     */
+     Atributos del Estudiante
+      */
     String nombre;
     String apellido;
+    String carrera;
     String id;
     String pass;
 
     /*
     Constructor
      */
-    public Estudiante(String nombre, String apellido, String id, String pass)
+    public Estudiante(String nombre, String apellido, String carrera, String id, String pass)
     {
         this.nombre= nombre;;
         this.apellido = apellido;
+        this.carrera = carrera;
         this.id = id;
         this.pass = pass;
     }
@@ -30,6 +32,10 @@ public class Estudiante {
 
     public String getApellido() {
         return apellido;
+    }
+
+    public String getCarrera(){
+        return carrera;
     }
 
     public String getId() {
