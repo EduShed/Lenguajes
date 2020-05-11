@@ -258,4 +258,69 @@
         app:sparkbutton_primaryColor="@color/primary_color"
         app:sparkbutton_secondaryColor="@color/secondary_color" />
 
+    <ImageView
+        android:id="@+id/topDivider"
+        android:alpha="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/top_divider"></ImageView>
+
+    <ImageView
+        android:id="@+id/bottomDivider"
+        android:layout_width="wrap_content"
+        android:alpha="0"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtReservaInfo"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/bottom_divider2"></ImageView>
+
+    <TextView
+        android:id="@+id/txtNameReserva"
+        android:alpha="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="170dp"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:fontFamily="@font/acme"
+        android:layout_centerHorizontal="true"
+        android:hint="sdfsd fs">
+    </TextView>
+
+    <TextView
+        android:id="@+id/txtReservaInfo"
+        android:alpha="0"
+        android:layout_below="@+id/txtNameReserva"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:fontFamily="@font/acme"
+        android:layout_centerHorizontal="true"
+        android:hint="sdfsd fs">
+    </TextView>
+
+    <ImageView
+        android:id="@+id/emoji"
+        android:alpha="0"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:layout_toEndOf="@+id/txtNameReserva"
+        android:layout_alignTop="@+id/txtNameReserva"
+        android:src="@drawable/hello_emoji">
+    </ImageView>
+
+
+
 </RelativeLayout>

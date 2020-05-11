@@ -64,8 +64,8 @@ public class Reservas extends AppCompatActivity {
                 tipsPanel.animate().translationY(-2200).setDuration(1000).setStartDelay(0);
                 bottom.animate().translationY(2200).setDuration(1000).setStartDelay(0);
                 logo.animate().translationY(-800).setStartDelay(500);
-                txtTip.animate().alpha(0).setDuration(100).setStartDelay(390);
-                txtTipView.animate().alpha(0).setDuration(100).setStartDelay(390);
+                txtTip.animate().alpha(0).setDuration(100).setStartDelay(330);
+                txtTipView.animate().alpha(0).setDuration(100).setStartDelay(330);
                 myTimer = new CountDownTimer(850, 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
