@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CustomPopupTheme" parent="@style/Theme.AppCompat.Light">
+        <!-- if using android.widget.PopupMenu -->
+        <item name="android:popupMenuStyle">@style/PopupMenu</item>
+        <item name="android:overlapAnchor">true</item>
+        <item name="android:dropDownVerticalOffset">45dp</item>
+        <item name="android:dropDownHorizontalOffset">-170dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <!-- item name="android:itemBackground">@android:color/holo_red_light</item-->
+        <!-- if using android.support.v7.widget.PopupMenu -->
+        <item name="popupMenuStyle">@style/PopupMenu</item>
+    </style>
+</resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/deleteReservaWarning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/delete_reserva_warning"></ImageView>
+    <Button
+        android:id="@+id/deleteReservaWrningCancelBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="NO"
+        android:background="@drawable/reservar_btn_design"
+        android:layout_below="@id/deleteReservaWarning"
+        android:layout_marginLeft="50dp"></Button>
+
+    <Button
+        android:id="@+id/deleteReservaWrningYesBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="SI"
+        android:background="@drawable/reservar_btn_design"
+        android:layout_below="@id/deleteReservaWarning"
+        android:layout_toRightOf="@+id/deleteReservaWrningCancelBtn"
+        android:layout_marginLeft="30dp"></Button>
+</RelativeLayout>

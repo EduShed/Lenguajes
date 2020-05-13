@@ -20,7 +20,7 @@ Button btnNext;
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LaunchReserva();
+                LaunchLogin();
             }
         });
 
@@ -29,7 +29,7 @@ Button btnNext;
     /*
     Intent que lanza el menú de login
      */
-    public void LaunchReserva()
+    public void LaunchLogin()
     {
         Intent intent = Login.launcheME(MainActivity.this);
         startActivity(intent);

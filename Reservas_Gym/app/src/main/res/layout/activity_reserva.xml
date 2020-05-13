@@ -215,20 +215,16 @@
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"></ImageView>
 
-    <com.varunest.sparkbutton.SparkButton
+    <Button
         android:id="@+id/btnHacerReserva"
         android:alpha="0"
+        android:background="@drawable/empty_reservar_button"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/btnsLayout"
-        android:layout_width="150dp"
-        android:layout_marginTop="20dp"
-        android:layout_height="150dp"
-        android:layout_marginLeft="30dp"
-        app:sparkbutton_activeImage="@drawable/empty_reservar_button"
-        app:sparkbutton_inActiveImage="@drawable/empty_reservar_button"
-        app:sparkbutton_iconSize="150dp"
-        app:sparkbutton_primaryColor="@color/primary_color"
-        app:sparkbutton_secondaryColor="@color/secondary_color" />
+        android:layout_width="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp" />
 
     <com.varunest.sparkbutton.SparkButton
         android:id="@+id/btnUserMenu"
