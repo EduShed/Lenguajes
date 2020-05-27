@@ -80,4 +80,5 @@
         android:layout_below="@+id/txtTipText"
         android:layout_centerHorizontal="true"></TextView>
 
+
 </RelativeLayout>

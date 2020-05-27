@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@android:color/transparent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="20dp"
+        android:layout_margin="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+            <ImageView
+                android:id="@+id/studentImage"
+                android:src="@drawable/udem_logo"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></ImageView>
+
+            <TextView
+                android:id="@+id/studentIdTxt"
+                android:textColor="#fff"
+                android:layout_marginTop="200dp"
+                android:textSize="20dp"
+                android:fontFamily="@font/acme"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></TextView>
+
+            <TextView
+                android:id="@+id/resTimeTxt"
+                android:textColor="#fff"
+                android:layout_marginTop="230dp"
+                android:fontFamily="@font/aladin"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:textSize="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></TextView>
+        </RelativeLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_marginTop="200dp"
+            android:scaleType="center"
+            android:src="@drawable/reservation_data_panel"></ImageView>
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>

@@ -20,4 +20,8 @@
     <style name="PopupMenu" parent="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Small">
         <item name="android:popupBackground">@color/secondary_color</item>
     </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds"> true</item>
+    </style>
 </resources>

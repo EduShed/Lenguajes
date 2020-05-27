@@ -30,7 +30,6 @@ public class Reservas extends AppCompatActivity {
     private TextView txtName;
     private String[] userData;
     private CountDownTimer myTimer;
-    private ViewFlipper myVF;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
